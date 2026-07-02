@@ -1,34 +1,53 @@
-﻿@model IEnumerable<Hospital.Models.PatientModel>
-@{
+﻿@model IEnumerable<Hospital.Models.Patient>
+
+    @{
     Layout = null;
-}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>PatientAdd</title>
-    <script>function fun() {
-            alert("Invoked by Button");
-        }</script>
-</head>
-<body>
-    <form action="/Patient/Submit" method="post">
-        Patient Name: <input type="text" name="name" value="" /><br /><br />
-        Patient Problem: <input type="text" name="problemDescription" value="" /><br /><br />
-        <input type="submit" value="submit" />
-    </form><br /><br /><br />
-    <table>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.name</td>
-                <td>@item.problemDescription</td>
-            </tr>
-        }
-    </table>
-</body>
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Patient Add</title>
+    </head>
+    <body>
+
+        <form action="/Patient/Submit" method="post">
+
+            <label>Patient Name</label><br />
+            <input type="text" name="Name" /><br /><br />
+
+            <label>Problem</label><br />
+            <input type="text" name="Problem" /><br /><br />
+
+            <input type="submit" value="Submit" />
+
+        </form>
+
+        <br /><br />
+
+        <table border="1" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Problem</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Problem</td>
+                </tr>
+            }
+
+            </tbody>
+
+        </table>
+
+    </body>
 </html>

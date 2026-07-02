@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Hospital.Models
 {
@@ -22,7 +18,7 @@ namespace Hospital.Models
         [EmailAddress]
         public string Email { get; set; }
 
-        public string PasswordHash { get; set; }
+        public string? PasswordHash { get; set; }
 
         public bool IsActive { get; set; } = true;
     }

@@ -1,32 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
-using Hospital.Models;
+﻿using Hospital.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hospital.DAL
 {
     public class PatientDal : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public PatientDal(DbContextOptions<PatientDal> options)
+            : base(options)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=ROHIT;Initial Catalog=PatientDB;Integrated Security=True");
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Patient>().HasKey(p => p.Id);
-
-            modelBuilder.Entity<Patient>().Property(t => t.Id).ValueGeneratedNever();
-
-            modelBuilder.Entity<Patient>()
-                .ToTable("Patients");
-
-            
         }
 
         public DbSet<Patient> Patients { get; set; }
+        public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Patient>(entity =>
+            {
+                entity.HasKey(p => p.Id);
+
+                entity.Property(p => p.Id)
+                       .ValueGeneratedOnAdd();
+
+                entity.ToTable("Patients");
+            });
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(u => u.Id);
+
+                entity.ToTable("Users");
+            });
+        }
     }
 }
