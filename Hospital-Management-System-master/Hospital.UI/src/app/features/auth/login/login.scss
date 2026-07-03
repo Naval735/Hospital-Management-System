@@ -1,0 +1,29 @@
+body{
+    background:#eef3f8;
+}
+
+.login-card{
+
+    width:420px;
+
+    background:white;
+
+    transition:.3s;
+}
+
+.login-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.form-control{
+
+    border-radius:10px;
+
+}
+
+.btn{
+
+    border-radius:10px;
+}
