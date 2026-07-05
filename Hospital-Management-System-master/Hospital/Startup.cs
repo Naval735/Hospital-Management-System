@@ -31,7 +31,7 @@ namespace Hospital
             services.AddDbContext<PatientDal>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            // Dependency Injection
+            // Dependency Injections
             services.AddScoped<IPatientRepository, PatientRepository>();
             services.AddScoped<IPatientService, PatientService>();
 
