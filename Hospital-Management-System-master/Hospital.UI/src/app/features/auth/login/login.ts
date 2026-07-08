@@ -33,6 +33,10 @@ export class Login {
       password: ['', Validators.required]
     });
 
+    if(this.auth.isLoggedIn()){
+      this.router.navigate(['/dashboard']);
+    }
+
   }
 
   // Login Button Click

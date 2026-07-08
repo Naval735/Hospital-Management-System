@@ -23,4 +23,16 @@ private apiUrl = 'https://localhost:5001/api/Auth';
 
   }
 
+         logout(): void{
+          localStorage.removeItem('token');
+          localStorage.removeItem('email');
+          localStorage.removeItem('role');
+         }
+         getToken(): string | null{
+          return localStorage.getItem('token');
+         }
+          
+         isLoggedIn(): boolean{
+          return !!this.getToken();
+         }
 }
