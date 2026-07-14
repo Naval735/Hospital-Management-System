@@ -63,6 +63,7 @@ export class Login {
         localStorage.setItem('token', response.token);
         localStorage.setItem('email', response.email);
         localStorage.setItem('role', response.role);
+        localStorage.setItem('name',response.name);
 
         this.router.navigate(['/dashboard']);
       },

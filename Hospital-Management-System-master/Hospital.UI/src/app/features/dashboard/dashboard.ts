@@ -9,10 +9,26 @@ import { Auth } from '../../core/services/auth';
 })
 export class Dashboard {
 
+  name: string = '';
+  role: string = '';
+upcomingAppointments = 1;
+
+prescriptions = 5;
+
+medicalRecords = 8;
+
+medicalReports = 4;
   constructor(
     private auth:Auth,
     private router: Router
   ) {}
+
+  ngOnInit(): void {
+
+    this.name = localStorage.getItem('name') || '';
+    this.role = localStorage.getItem('role') || '';
+
+  } 
 
   logout(): void{
     this.auth.logout();

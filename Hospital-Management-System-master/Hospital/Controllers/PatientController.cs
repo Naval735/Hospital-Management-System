@@ -4,12 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 
-[Authorize]
-[ApiController]
-[Route("api/[controller]")]
-public class PatientController : ControllerBase
-{
-}
 namespace Hospital.Controllers
 {
     [Authorize]

@@ -104,6 +104,20 @@ namespace Hospital
                         IssuerSigningKey = new SymmetricSecurityKey(
                             Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                     };
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            Console.WriteLine("AUTH HEADER: " + context.Request.Headers["Authorization"]);
+                            return Task.CompletedTask;
+                        },
+
+                        OnAuthenticationFailed = context =>
+                        {
+                            Console.WriteLine("JWT ERROR: " + context.Exception.Message);
+                            return Task.CompletedTask;
+                        }
+                    };
                 });
 
             services.AddAuthorization();

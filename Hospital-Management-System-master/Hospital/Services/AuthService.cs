@@ -55,7 +55,8 @@ namespace Hospital.Services
                 Token = token,
                 Email = user.Email,
                 Role = user.Role,
-                Expiration = DateTime.UtcNow.AddMinutes(60)
+                Expiration = DateTime.UtcNow.AddMinutes(60),
+                Name = user.Name
             };
         }
     }
